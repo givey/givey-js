@@ -10,6 +10,8 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
+          'vendor/underscore/underscore.js',
+          'vendor/backbone/backbone.js',
           'src/app.js',
           'src/givey.js'
         ],
