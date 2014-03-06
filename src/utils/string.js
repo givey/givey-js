@@ -6,18 +6,27 @@ String.prototype.isGiveyDefaultImage = function () {
   return false;
 }
 
-// Source: http://stackoverflow.com/a/21605159/1053704
-if (typeof String.prototype.capitalize !== 'function') {
-  String.prototype.capitalize = function(lc, all) {
-    if (all) {
-      return this.split(" ").map( function( currentValue, index, array ) {
-        return currentValue.capitalize( lc );
-      }, this ).join(" ").split("-").map( function( currentValue, index, array ) {
-        return currentValue.capitalize( false );
-      }, this ).join("-");
-    }
-    else {
-      return lc ? this.charAt( 0 ).toUpperCase() + this.slice( 1 ).toLowerCase() : this.charAt( 0 ).toUpperCase() + this.slice( 1 );
-    }
+String.prototype.capitalize = function (lc) {
+  return lc
+    ? this.charAt(0).toUpperCase() + this.slice(1).toLowerCase()
+    : this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+String.prototype.camelize = function () {
+  var s = this.trim().replace(/(\-|_|\s)+(.)?/g, function(mathc, sep, c) {
+    return (c ? c.toUpperCase() : '');
+  });
+  return s;
+}
+
+String.prototype.pluralize = function () {
+  var pluralizeMap = {
+    'user': 'user',
+    'channel': 'channels',
+    'charity': 'charities',
+    'donation': 'donations',
+    'business': 'businesses',
+    'givey_rule': 'givey_rules'
   }
+  return pluralizeMap[this] || this + 's';
 }

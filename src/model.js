@@ -20,7 +20,7 @@ window.GiveyModel = (function () {
     }
     return function (data) {
       for (var field in data) {
-        self.data[field] = data[field];
+        self.data[field.camelize()] = data[field]
       }
       return self;
     };
