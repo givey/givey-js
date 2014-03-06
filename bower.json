@@ -1,6 +1,7 @@
 {
   "name": "givey",
   "dependencies": {
-    "backbone": "1.1.2"
+    "backbone": "1.1.2",
+    "rsvp": "3.0.6"
   }
 }
