@@ -1,5 +1,14 @@
 module.exports = function(grunt) {
 
+  var files = [
+    'vendor/jquery/dist/jquery.js',
+    'vendor/rsvp/rsvp.js',
+    'src/utils/*.js',
+    'src/model.js',
+    'src/models/*.js',
+    'src/givey.js'
+  ];
+
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
@@ -9,14 +18,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: [
-          'vendor/jquery/dist/jquery.js',
-          'vendor/rsvp/rsvp.js',
-          'src/utils/*.js',
-          'src/model.js',
-          'src/models/*.js',
-          'src/givey.js'
-        ],
+        src: files,
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -32,8 +34,28 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: ['<%= concat.dist.src %>'],
+      files: files,
       tasks: ['build']
+    },
+
+    karma: {
+      options: {
+        frameworks: ['qunit'],
+        files: files.concat([
+          'node_modules/qunitjs/qunit/qunit.css',
+          'test/karma_runner.js',
+          'test/**/*.js'
+        ])
+      },
+      firefox: {
+        browsers: ['Firefox'],
+        logLevel: 'info'
+      },
+      ci: {
+        browsers: ['PhantomJS'],
+        logLevel: 'info',
+        singleRun: true
+      }
     }
 
   });
@@ -41,8 +63,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('test', ['karma:ci:start']);
   grunt.registerTask('default', ['build']);
 
 }

@@ -5,6 +5,9 @@
     "grunt-cli": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-watch": "*",
-    "grunt-contrib-uglify": "*"
+    "grunt-contrib-uglify": "*",
+    "grunt-karma": "*",
+    "karma": "~0.10",
+    "karma-qunit": "~0.1"
   }
 }
