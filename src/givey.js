@@ -10,13 +10,17 @@ window.GiveyApi = (function (options) {
     return new RSVP.Promise(function (resolve, reject) {
       var resource = type.pluralize();
       var url =  api_host + '/v' + api_version + '/' + resource + '/' + id;
-      $.get(url).then(function (data) {
+      self.getJSON(url, function (data) {
         var model = new App[type.capitalize()](data[type]);
         resolve(model);
       }, function (error) {
         console.error('GIVEY DATA ERROR: ', error);
       });
     });
+  }
+
+  self.getJSON = function(url, resolve, reject) {
+    $.get(url).then(resolve, reject);
   }
 
   return self;
