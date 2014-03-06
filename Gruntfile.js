@@ -10,9 +10,11 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'vendor/underscore/underscore.js',
-          'vendor/backbone/backbone.js',
-          'src/app.js',
+          'vendor/jquery/dist/jquery.js',
+          'vendor/rsvp/rsvp.js',
+          'src/utils/*.js',
+          'src/model.js',
+          'src/models/*.js',
           'src/givey.js'
         ],
         dest: 'dist/<%= pkg.name %>.js'

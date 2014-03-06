@@ -6,7 +6,20 @@
   </head>
   <body>
 
-    <script src="dist/givey.min.js"></script>
+    <h1>Business</h1>
+
+    <div id="business-info">loading..</div>
+
+    <script src="dist/givey.js"></script>
+    <script>
+      var Givey = new GiveyApi();
+      Givey.find('business', 'giveybiz').then(function (business) {
+        document.getElementById('business-info').innerHTML = ''
+          + '<a href="https://www.givey.com/' + business.get('giveyTag') + '">'
+            + business.get('name')
+          + '</a>';
+      });
+    </script>
 
   </body>
 </html>
