@@ -44,6 +44,7 @@ module.exports = function(grunt) {
         files: files.concat([
           'node_modules/qunitjs/qunit/qunit.css',
           'test/karma_runner.js',
+          'test/helper.js',
           'test/**/*.js'
         ])
       },
