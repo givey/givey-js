@@ -1,0 +1,10 @@
+{
+  "name": "givey",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt-cli": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-uglify": "*"
+  }
+}
