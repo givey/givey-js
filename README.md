@@ -5,25 +5,36 @@ Library for interacting with the GiveyAPI in the browser.
 
 ## Usage
 
-Before using the Givey API you will want to create a new instance to work with.
-
-
 ### Create a new instance
+
+Before using the Givey API you will want to create a new instance to work with.
 
 ``` js
 var Givey = new GiveyApp(options);
 ```
 
 
-### Find a Business
+### Loading an Entity
+
+There are many entities on Givey which can be interacted with. The current entity list contains Charity, User, Business and Donation.
 
 ``` js
-Givey.find('business', 'giveybiz').then(renderBusiness);
+Givey.find('business', 'giveybiz').then(function (business) {
+  business.get('name'); // Givey Ltd
+});
 ```
 
 
-### Find a charity
+### Relationships
+
+Entities can contain relationships to other entities which are resolved asynchronously. Relationships are not resolved until the first time they are called via ```entity.get()```.
 
 ``` js
-Givey.find('charity', 'dogstrust').then(renderCharity);
+Givey.find('business', 'giveybiz').then(function (business) {
+  business.get('employees').then(function (employees) {
+    $.each(employees, function (_, user) {
+      user.get('giveyTag');
+    });
+  });
+});
 ```

@@ -25,7 +25,7 @@
           + '</a>'
         );
         business.get('employees').then(function (employees) {
-          $.each(employees, function (index, user) {
+          $.each(employees, function (_, user) {
             var li = $('<li>');
             li.text(user.get('fullName') + ' (' + user.get('giveyTag') + ', ' + user.get('email') + ')');
             $('.business-employees').append(li);
