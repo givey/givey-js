@@ -1,29 +1,54 @@
 var GiveyModel = (function () {
 
-  var self = this;
-  self.fields = {
-    'id': 0
-  }
-  self.data = {}
-
-  self.get = function(attr) {
-    return self.data[attr];
-  }
-
   // Return instance constructor
-  var ret = function (fields) {
+  var ret = function GiveyModel (app, type, fields) {
+
+    var self = this;
+
+    self.app = app;
+    self.type = type.capitalize();
+
+    self.fields = {
+      'id': 0
+    }
+
     for (var field in fields) {
       self.fields[field] = fields[field];
     }
     return function (data) {
-      for (var field in data) {
-        self.data[field.camelize()] = data[field]
+
+      var instance = this;
+      instance.data = {};
+      instance.type = self.type;
+
+      instance.get = function(attr) {
+        var type = self.fields[attr];
+        var value = instance.data[attr];
+        var model = GiveyApp.models[type];
+        if (model) {
+          return self.app.find(type, value);
+        } else {
+          return value;
+        }
       }
-      return self;
+
+      instance.dump = function () {
+        return self.data;
+      }
+
+      instance.toString = function() {
+        return 'GiveyModel[' + self.type + ']';
+      }
+
+      for (var field in data) {
+        instance.data[field.camelize()] = data[field]
+      }
+      return instance;
     };
+
   }
-  ret.__proto__.extend = function (fields) {
-    var instance = new GiveyModel(fields);
+  ret.__proto__.extend = function (app, type, fields) {
+    var instance = new GiveyModel(app, type, fields);
     return instance;
   }
   return ret;

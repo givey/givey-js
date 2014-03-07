@@ -1,7 +1,7 @@
 GiveyApp.registerModel('user', {
 
   name: 'string',
-  email: 'email',
+  email: 'string',
   giveyTag: 'string',
   firstName: 'string',
   lastName: 'string',

@@ -6,9 +6,12 @@
   </head>
   <body>
 
-    <h1>Business</h1>
+    <div id="business-info">
+      <h3 class="business-name">loading..</h3>
+      <ul class="business-employees">
+      </ul>
+    </div>
 
-    <div id="business-info">loading..</div>
 
     <script src="dist/givey.js"></script>
     <script>
@@ -16,10 +19,18 @@
         host: 'https://givey-api-staging.herokuapp.com'
       });
       Givey.find('business', 'giveybiz').then(function (business) {
-        document.getElementById('business-info').innerHTML = ''
+        $('.business-name').html(''
           + '<a href="https://www.givey.com/' + business.get('giveyTag') + '">'
             + business.get('name')
-          + '</a>';
+          + '</a>'
+        );
+        business.get('employees').then(function (employees) {
+          $.each(employees, function (index, user) {
+            var li = $('<li>');
+            li.text(user.get('fullName') + ' (' + user.get('giveyTag') + ', ' + user.get('email') + ')');
+            $('.business-employees').append(li);
+          });
+        });
       });
     </script>
 
