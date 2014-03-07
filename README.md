@@ -5,7 +5,14 @@ Library for interacting with the GiveyAPI in the browser.
 
 ## Usage
 
-All interaction is done via the global ```GiveyApi``` instance.
+Before using the Givey API you will want to create a new instance to work with.
+
+
+### Create a new instance
+
+``` js
+var Givey = new GiveyApp(options);
+```
 
 
 ### Find a Business
@@ -13,6 +20,7 @@ All interaction is done via the global ```GiveyApi``` instance.
 ``` js
 Givey.find('business', 'giveybiz').then(renderBusiness);
 ```
+
 
 ### Find a charity
 
