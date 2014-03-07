@@ -9,5 +9,8 @@
     "grunt-karma": "*",
     "karma": "~0.10",
     "karma-qunit": "~0.1"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }

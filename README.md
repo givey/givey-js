@@ -1,6 +1,6 @@
 # Givey JavaScript SDK
 
-Library for interacting with the GiveyAPI in the browser.
+[![Build Status](https://travis-ci.org/givey/js-sdk.png?branch=master)](https://travis-ci.org/givey/js-sdk)
 
 
 ## Usage
