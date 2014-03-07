@@ -1,4 +1,4 @@
-App.Business = GiveyModel.extend({
+GiveyApp.registerModel('business', {
 
   name: 'string',
   giveyTag: 'string',

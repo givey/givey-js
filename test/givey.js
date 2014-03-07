@@ -1,6 +1,6 @@
 module('Givey.find', {
   setup: function () {
-    Givey = new GiveyApi();
+    Givey = new GiveyApp();
   },
   teardown: function () {
     Givey = null;

@@ -4,9 +4,9 @@ module.exports = function(grunt) {
     'vendor/jquery/dist/jquery.js',
     'vendor/rsvp/rsvp.js',
     'src/utils/*.js',
+    'src/givey.js',
     'src/model.js',
-    'src/models/*.js',
-    'src/givey.js'
+    'src/models/*.js'
   ];
 
   grunt.initConfig({

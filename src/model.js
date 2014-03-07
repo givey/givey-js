@@ -1,12 +1,9 @@
-var App = App || {};
-
-window.GiveyModel = (function () {
+var GiveyModel = (function () {
 
   var self = this;
   self.fields = {
     'id': 0
   }
-
   self.data = {}
 
   self.get = function(attr) {

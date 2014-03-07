@@ -1,17 +1,15 @@
-window.GiveyApi = (function (options) {
+window.GiveyApp = (function () {
 
   var self = this;
-
-  var options = options || {};
-  var api_host = options.host || 'https://api.givey.com';
-  var api_version = options.version || 1;
+  var api_host, api_version;
+  self.models = {};
 
   self.find = function(type, id) {
     return new RSVP.Promise(function (resolve, reject) {
       var resource = type.pluralize();
       var url =  api_host + '/v' + api_version + '/' + resource + '/' + id;
       self.getJSON(url, function (data) {
-        var model = new App[type.capitalize()](data[type]);
+        var model = new self.models[type.toLowerCase()](data[type]);
         resolve(model);
       }, function (error) {
         console.error('GIVEY DATA ERROR: ', error);
@@ -23,7 +21,19 @@ window.GiveyApi = (function (options) {
     $.get(url).then(resolve, reject);
   }
 
-  return self;
+  // Return instance constructor
+  var ret = function (options) {
+    var options = options || {};
+    api_host = options.host || 'https://api.givey.com';
+    api_version = options.version || 1;
+    return self;
+  }
+  ret.__proto__.registerModel = function (type, fields) {
+    var model = new GiveyModel(fields);
+    self.models[type] = model;
+    return model;
+  }
+  return ret;
 
-});
+}());
 

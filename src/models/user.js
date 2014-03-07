@@ -1,4 +1,4 @@
-App.User = GiveyModel.extend({
+GiveyApp.registerModel('user', {
 
   name: 'string',
   email: 'email',
