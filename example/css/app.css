@@ -1,0 +1,21 @@
+body {
+  padding-top: 30px;
+}
+
+.panel-heading h1, .panel-heading h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0;
+  padding: 5px 0px;
+}
+
+.table h3 {
+  margin: 2px 0 5px;
+  font-size: 1.3em;
+}
+.panel-body.tabular-data {
+  padding: 0;
+}
+.panel-body table, .panel-body .alert {
+  margin: 0;
+}

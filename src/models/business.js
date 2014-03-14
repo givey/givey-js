@@ -7,6 +7,7 @@ GiveyApp.registerModel('business', {
   matchTotal: 'number',
   twitterHandle: 'string',
   emailDomain: 'string',
+  profileMessage: 'string',
 
   employees: 'user'
 
