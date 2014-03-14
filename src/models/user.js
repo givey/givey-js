@@ -6,6 +6,7 @@ GiveyApp.registerModel('user', {
   firstName: 'string',
   lastName: 'string',
   fullName: 'string',
+  shortName: 'string',
   personalMessage: 'string',
   avatarUrl: 'string',
   moneyTotal: 'number'
