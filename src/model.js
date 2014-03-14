@@ -23,6 +23,9 @@ var GiveyModel = (function () {
 
       instance.get = function(attr) {
         var type = self.fields[attr];
+        if (typeof type == 'function') {
+          return type.call(instance);
+        }
         var value = instance.data[attr];
         var model = GiveyApp.models[type];
         if (model) {

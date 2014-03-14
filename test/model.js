@@ -3,7 +3,7 @@ var Givey, business;
 module('GiveyModel', {
   setup: function () {
     Givey = new GiveyApp();
-    business = new GiveyApp.models['business']({ id: 1, givey_tag: 'giveybiz', name: 'givey ltd', employees: [1, 1439] });
+    business = new GiveyApp.models['business']({id: 1, givey_tag: 'giveybiz', name: 'givey ltd', employees: [1, 1439], match_total: 12345 });
   },
   teardown: function () {
     Givey = null;
@@ -13,6 +13,9 @@ test('directly create a model', function () {
   expect(2);
   equal(business.get('name'), 'givey ltd');
   equal(business.type, 'Business');
+});
+test('computed property: matchTotalFormatted', function () {
+  equal(business.get('matchTotalFormatted'), '£123.45');
 });
 asyncTest('get with hasMany relationship', function () {
   expect(4);

@@ -20,6 +20,9 @@
             </div>
             <div class="panel-body">
               <p class="business-profile"></p>
+              <br/>
+              <table class="table table-striped business-metrics">
+              </table>
             </div>
           </div>
         </div>
@@ -61,6 +64,19 @@
           + '</a>'
         );
         $('.business-profile').html(business.get('profileMessage'));
+        var metrics = {
+          matchCount: 'Number of Matches',
+          matchTotalFormatted: 'Matched Amount'
+        }
+        $('.business-metrics').empty();
+        $.each(metrics, function(attr, name) {
+          var tr = $('<tr>');
+          tr.html(''
+            + '<td>' + name + '</td>'
+            + '<td class="text-right">' + business.get(attr) + '</td>'
+          )
+          $('.business-metrics').append(tr);
+        });
         business.get('employees').then(function (employees) {
           $.each(employees, function (_, user) {
             var link = 'https://www.givey.com/' + user.get('giveyTag');
