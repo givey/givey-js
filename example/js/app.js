@@ -27,15 +27,15 @@ var App = {
       // Employees
       business.get('employees').then(function (employees) {
         $.each(employees, function (_, user) {
-          var link = 'https://www.givey.com/' + user.get('giveyTag');
+          var link = 'https://www.givey.com/' + user.get('giveyTag').toLowerCase();
           var tr = $('<tr>');
           tr.html(''
             + '<td width="10%">'
-              + '<img src="' + user.get('avatarUrl') + '" width="48" height="48" alt=""/>'
+              + '<a href="' + link + '" target="_blank"><img src="' + user.get('avatarUrl') + '" width="48" height="48" alt=""/></a>'
             + '</td>'
             + '<td>'
               + '<h3><a href="' + link + '" target="_blank">' + (user.get('fullName') || user.get('shortName')) + '</a></h3>'
-              + '<span class="text-muted">givey.com/' + user.get('giveyTag') + '</span>'
+              + '<a href="' + link + '" target="_blank" class="text-muted">givey.com/' + user.get('giveyTag').toLowerCase() + '</a>'
             + '</td>'
           );
           $('.business-employees').append(tr);
@@ -58,11 +58,15 @@ var App = {
       // Charities
       business.get('charities').then(function (charities) {
         $.each(charities, function (_, charity) {
-          var link = 'https://www.givey.com/' + charity.get('giveyTag');
+          var link = 'https://www.givey.com/' + charity.get('giveyTag').toLowerCase();
           var tr = $('<tr>');
           tr.html(''
             + '<td width="10%">'
-              + '<a href="' + link + '" target="_blank">' + charity.get("name") + '</a>'
+              + '<a href="' + link + '" target="_blank"><img src="' + charity.get('avatarUrl') + '" width="48" height="48" alt=""/></a>'
+            + '</td>'
+            + '<td>'
+              + '<h3><a href="' + link + '" target="_blank">' + charity.get('name') + '</a></h3>'
+              + '<a href="' + link + '" target="_blank" class="text-muted">givey.com/' + charity.get('giveyTag').toLowerCase() + '</a>'
             + '</td>'
           );
           $('.business-charities').append(tr);
