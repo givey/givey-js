@@ -44,8 +44,9 @@
             <div class="panel-heading">
               <h2>Donations</h2>
             </div>
-            <div class="panel-body">
-              <div class="alert alert-info">Coming soon!</div>
+            <div class="panel-body tabular-data">
+              <table class="table table-striped table-hover business-donations">
+              </table>
             </div>
           </div>
         </div>
@@ -56,7 +57,9 @@
 
     <script src="../dist/givey.js"></script>
     <script>
-      var Givey = new GiveyApp();
+      var Givey = new GiveyApp({
+        host: 'http://api.givey.dev'
+      });
       Givey.find('business', 'giveybiz').then(function (business) {
         $('.business-name').html(''
           + '<a href="https://www.givey.com/' + business.get('giveyTag') + '">'
@@ -77,6 +80,8 @@
           )
           $('.business-metrics').append(tr);
         });
+
+        // Employees
         business.get('employees').then(function (employees) {
           $.each(employees, function (_, user) {
             var link = 'https://www.givey.com/' + user.get('giveyTag');
@@ -93,6 +98,20 @@
             $('.business-employees').append(tr);
           });
         });
+
+        // Donations
+        business.get('donations').then(function (donations) {
+          $.each(donations, function (_, donation) {
+            var tr = $('<tr>');
+            tr.html(''
+              + '<td width="10%">'
+                + donation.get('donationStringHtml')
+              + '</td>'
+            );
+            $('.business-donations').append(tr);
+          });
+        });
+
       });
     </script>
 
