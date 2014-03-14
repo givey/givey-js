@@ -25,15 +25,24 @@
               </table>
             </div>
           </div>
-        </div>
-
-        <div class="col-lg-4">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h2>Employees</h2>
             </div>
             <div class="panel-body tabular-data">
               <table class="table table-striped table-hover business-employees">
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2>Charities</h2>
+            </div>
+            <div class="panel-body tabular-data">
+              <table class="table table-striped table-hover business-charities">
               </table>
             </div>
           </div>
@@ -109,6 +118,20 @@
               + '</td>'
             );
             $('.business-donations').append(tr);
+          });
+        });
+
+        // Charities
+        business.get('charities').then(function (charities) {
+          $.each(charities, function (_, charity) {
+            var link = 'https://www.givey.com/' + charity.get('giveyTag');
+            var tr = $('<tr>');
+            tr.html(''
+              + '<td width="10%">'
+                + '<a href="' + link + '" target="_blank">' + charity.get("name") + '</a>'
+              + '</td>'
+            );
+            $('.business-charities').append(tr);
           });
         });
 

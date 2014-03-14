@@ -11,6 +11,7 @@ GiveyApp.registerModel('business', {
 
   employees: 'user',
   donations: 'donation',
+  charities: 'charity',
 
   matchTotalFormatted: function () {
     return '£' + (Math.round((this.get('matchTotal') * 100) / 100) / 100).toFixed(2);
