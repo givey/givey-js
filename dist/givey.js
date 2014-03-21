@@ -2145,10 +2145,7 @@ String.prototype.pluralize = function () {
       crossDomain: true,
       dataType: 'jsonp'
     });
-    ajax.done(resolve);
-    ajax.fail(function (jqXHR, textStatus, errorThrown) {
-      reject(errorThrown);
-    });
+    ajax.then(resolve, reject);
   }
 
   // Return instance constructor
