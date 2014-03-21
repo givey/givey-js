@@ -50,7 +50,7 @@ var GiveyModel = (function () {
     };
 
   }
-  ret.__proto__.extend = function (app, type, fields) {
+  ret.extend = function (app, type, fields) {
     var instance = new GiveyModel(app, type, fields);
     return instance;
   }
