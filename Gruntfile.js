@@ -8,6 +8,10 @@ module.exports = function(grunt) {
     'src/model.js',
     'src/models/*.js'
   ];
+  var backboneFiles = [
+    'src/adapters/backbone/adapter.js',
+    'src/adapters/backbone/models/*.js'
+  ];
 
   grunt.initConfig({
 
@@ -20,6 +24,10 @@ module.exports = function(grunt) {
       dist: {
         src: files,
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      backbone: {
+        src: backboneFiles,
+        dest: 'dist/<%= pkg.name %>-backbone.js'
       }
     },
     uglify: {
@@ -28,13 +36,14 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'],
+          'dist/<%= pkg.name %>-backbone.min.js': ['<%= concat.backbone.dest %>']
         }
       }
     },
 
     watch: {
-      files: files,
+      files: files + backboneFiles,
       tasks: ['build']
     },
 

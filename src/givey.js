@@ -1,6 +1,6 @@
 window.GiveyApp = (function () {
 
-  var app = this, klass;
+  var app = this, klass, loadAdapter;
   var api_host, api_version;
 
   app.find = function(type, id) {
@@ -39,11 +39,23 @@ window.GiveyApp = (function () {
     $.get(url).then(resolve, reject);
   }
 
+  loadAdapter = function(adapterName) {
+    var adapterClassName = adapterName.toUpperCase().split('').splice(0, 1).join('') + adapterName.split('').splice(1).join('');
+    var adapter = GiveyAppAdapters[adapterClassName];
+    if (! adapter) {
+      console.error('Could not locate Givey Adapter [' + adapterClassName + ']');
+      return;
+    }
+  }
+
   // Return instance constructor
   klass = function (options) {
     var options = options || {};
     api_host = options.host || 'https://api.givey.com';
     api_version = options.version || 1;
+    if (options.adapter) {
+      loadAdapter(options.adapter, options);
+    }
     return app;
   }
   klass.models = {};
@@ -56,3 +68,5 @@ window.GiveyApp = (function () {
 
 }());
 
+// Adapter Support
+var GiveyAppAdapters = {};

@@ -1,0 +1,5 @@
+GiveyAppAdapters.Backbone = {
+
+  App: {}
+
+}
