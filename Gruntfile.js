@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
   var files = [
-    'vendor/jquery/dist/jquery.js',
     'vendor/rsvp/rsvp.js',
     'src/utils/*.js',
     'src/givey.js',
@@ -41,7 +40,7 @@ module.exports = function(grunt) {
     karma: {
       options: {
         frameworks: ['qunit'],
-        files: files.concat([
+        files: ['vendor/jquery/jquery.js'].concat(files).concat([
           'node_modules/qunitjs/qunit/qunit.css',
           'test/karma_runner.js',
           'test/helper.js',

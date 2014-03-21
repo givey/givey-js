@@ -30,13 +30,23 @@ window.GiveyApp = (function () {
           resolve(model);
         }
       }, function (error) {
-        console.error('GIVEY DATA ERROR: ', error);
+        if (window.console && window.console.error) {
+          console.error('GIVEY DATA ERROR:', error);
+        } else {
+          alert('GIVEY DATA ERROR: ' + error);
+        }
       });
     });
   }
 
   app.getJSON = function(url, resolve, reject) {
-    $.get(url).then(resolve, reject);
+    var ajax = $.ajax({
+      type: 'GET',
+      url: url,
+      crossDomain: true,
+      dataType: 'jsonp'
+    });
+    ajax.then(resolve, reject);
   }
 
   // Return instance constructor
@@ -47,7 +57,7 @@ window.GiveyApp = (function () {
     return app;
   }
   klass.models = {};
-  klass.__proto__.registerModel = function (type, fields) {
+  klass.registerModel = function (type, fields) {
     var model = GiveyModel.extend(app, type, fields);
     klass.models[type] = model;
     return model;

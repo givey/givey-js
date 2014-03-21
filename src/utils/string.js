@@ -13,7 +13,7 @@ String.prototype.capitalize = function (lc) {
 }
 
 String.prototype.camelize = function () {
-  var s = this.trim().toLowerCase().replace(/(\-|_|\s)+(.)?/g, function(mathc, sep, c) {
+  var s = $.trim(this).toLowerCase().replace(/(\-|_|\s)+(.)?/g, function(mathc, sep, c) {
     return (c ? c.toUpperCase() : '');
   });
   return s;
