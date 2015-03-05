@@ -23,13 +23,18 @@ var GiveyModel = (function () {
 
       instance.get = function(attr) {
         var type = self.fields[attr];
+
+        // Custom Callback
         if (typeof type == 'function') {
           return type.call(instance);
         }
+
         var value = instance.data[attr];
         var model = GiveyApp.models[type];
         if (model) {
-          return self.app.find(type, value);
+          var params = {};
+          params[self.type.toLowerCase() + "_id"] = data['id'];
+          return self.app.where(type, params);
         } else {
           return value;
         }
