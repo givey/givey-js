@@ -1,6 +1,6 @@
 {
   "name": "givey",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": [
     "dist/givey.js",
     "dist/givey.min.js"
@@ -8,12 +8,13 @@
   "ignore": [
     "test",
     "example",
+    "vendor",
     "Gruntfile.js",
     "package.json",
-    ".bowerrc"
+    ".bowerrc",
   ],
   "dependencies": {
-    "jquery": "~ 1.10.0",
-    "rsvp": "~ 3.0.6"
+    "jquery": "~ 2.1.3",
+    "rsvp": "~ 3.0.17"
   }
 }
