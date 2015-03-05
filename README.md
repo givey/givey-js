@@ -4,6 +4,7 @@ This is a preview release so please use at your own risk and report any issues y
 
 [![Code Climate](https://codeclimate.com/github/givey/js-sdk/badges/gpa.svg)](https://codeclimate.com/github/givey/js-sdk)
 [![Build Status](https://travis-ci.org/givey/js-sdk.png?branch=master)](https://travis-ci.org/givey/js-sdk)
+[![Bower version](https://badge.fury.io/bo/givey.svg)](http://badge.fury.io/bo/givey)
 
 
 
