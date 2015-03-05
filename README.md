@@ -8,10 +8,12 @@
 
 ### Create a new instance
 
-Before using the Givey API you will want to create a new instance to work with.
+Before using the Givey API you will want to create a new instance to work with. You will require an access token which can be obtained from the [Givey Developer Portal](https://www.givey.com/developers).
 
 ``` js
-var Givey = new GiveyApp(options);
+var Givey = new GiveyApp({
+  token: "XXXX"
+});
 ```
 
 
