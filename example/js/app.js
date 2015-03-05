@@ -5,10 +5,11 @@ var App = {
     var Givey = new GiveyApp(options);
     Givey.find('business', 'giveybiz').then(function (business) {
       $('.business-name').html(''
-        + '<a href="https://www.givey.com/' + business.get('giveyTag') + '">'
+        + '<a href="https://www.givey.com/' + business.get('giveyTag').toLowerCase() + '" target="_blank">'
           + business.get('name')
         + '</a>'
       );
+      $('.business-avatar').find('img').attr('src', business.get('avatarUrl'));
       $('.business-profile').html(business.get('profileMessage'));
       var metrics = {
         matchCount: 'Number of Matches',
@@ -34,7 +35,7 @@ var App = {
               + '<a href="' + link + '" target="_blank"><img src="' + user.get('avatarUrl') + '" width="48" height="48" alt=""/></a>'
             + '</td>'
             + '<td>'
-              + '<h3><a href="' + link + '" target="_blank">' + (user.get('fullName') || user.get('shortName')) + '</a></h3>'
+              + '<h3><a href="' + link + '" target="_blank">' + user.get('name') + '</a></h3>'
               + '<a href="' + link + '" target="_blank" class="text-muted">givey.com/' + user.get('giveyTag').toLowerCase() + '</a>'
             + '</td>'
           );
@@ -48,7 +49,7 @@ var App = {
           var tr = $('<tr>');
           tr.html(''
             + '<td width="10%">'
-              + donation.get('donationStringHtml')
+              + donation.get('summaryHtml')
             + '</td>'
           );
           $('.business-donations').append(tr);
