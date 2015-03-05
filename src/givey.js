@@ -39,6 +39,13 @@ window.GiveyApp = (function () {
     $.get(url).then(resolve, reject);
   }
 
+  app.getApiHost = function () {
+    return api_host;
+  }
+  app.getApiVersion = function () {
+
+  }
+
   loadAdapter = function(adapterName) {
     var adapterClassName = adapterName.toUpperCase().split('').splice(0, 1).join('') + adapterName.split('').splice(1).join('');
     var adapter = GiveyAppAdapters[adapterClassName];

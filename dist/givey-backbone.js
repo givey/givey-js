@@ -11,7 +11,6 @@ GiveyAppAdapters.Backbone = {
       if (match && match[4]) {
         return match[4];
       }
-      // console.log(match);
     }
     return false;
   }
