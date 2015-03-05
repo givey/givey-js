@@ -1,5 +1,6 @@
 # Givey JavaScript SDK
 
+[![Code Climate](https://codeclimate.com/github/givey/js-sdk/badges/gpa.svg)](https://codeclimate.com/github/givey/js-sdk)
 [![Build Status](https://travis-ci.org/givey/js-sdk.png?branch=master)](https://travis-ci.org/givey/js-sdk)
 
 
