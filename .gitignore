@@ -1,2 +1,14 @@
 node_modules
 npm-debug.log
+
+# Ignore Bower Generics
+vendor/**/*.min.js
+vendor/**/.bower.json
+vendor/**/bower.json
+vendor/**/composer.json
+vendor/**/package.json
+vendor/**/README.md
+
+# Ignore Specific Library Files
+vendor/jquery/src
+vendor/jquery/MIT-LICENSE.txt

@@ -1,6 +1,6 @@
 {
   "name": "givey",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/givey/js-sdk",
   "dependencies": {
     "qunitjs": "1.14.0",
