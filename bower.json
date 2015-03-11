@@ -11,7 +11,7 @@
     "vendor",
     "Gruntfile.js",
     "package.json",
-    ".bowerrc",
+    ".bowerrc"
   ],
   "dependencies": {
     "jquery": "~ 2.1.3",
